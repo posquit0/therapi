@@ -1,0 +1,37 @@
+{
+  "name": "therapi",
+  "productName": "Therapi",
+  "version": "0.0.1",
+  "description": "RESTful API Documentation and Testing Application with Electron",
+  "license": "MIT",
+  "author": "Claud D. Park <posquit0.bj@gmail.com> (http://www.posquit0.com)",
+  "contributors": [],
+  "homepage": "https://github.com/posquit0/therapi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/posquit0/therapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/posquit0/therapi/issues"
+  },
+  "keywords": [
+    "Electron",
+    "swagger",
+    "blueprint",
+    "REST",
+    "RESTful",
+    "http",
+    "documentation",
+    "testing",
+    "therapi",
+    "oas",
+    "api"
+  ],
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^1.6.2"
+  }
+}
