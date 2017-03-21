@@ -34,6 +34,7 @@
     "lint": "eslint ./"
   },
   "devDependencies": {
+    "coveralls": "^2.12.0",
     "devtron": "^1.4.0",
     "electron": "^1.6.2",
     "eslint": "^3.18.0",
