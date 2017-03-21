@@ -30,11 +30,13 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --debug"
+    "dev": "electron . --debug",
+    "lint": "eslint ./"
   },
   "devDependencies": {
     "devtron": "^1.4.0",
     "electron": "^1.6.2",
+    "eslint": "^3.18.0",
     "spectron": "^3.6.0"
   }
 }
