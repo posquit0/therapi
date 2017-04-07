@@ -2,7 +2,7 @@
   "name": "therapi",
   "productName": "Therapi",
   "version": "0.0.1",
-  "description": "RESTful API Documentation and Testing Application with Electron",
+  "description": "RESTful API Documentation and Testing Application",
   "license": "MIT",
   "author": "Claud D. Park <posquit0.bj@gmail.com> (http://www.posquit0.com)",
   "contributors": [],
@@ -44,5 +44,8 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "spectron": "^3.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.16.0"
   }
 }
