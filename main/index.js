@@ -1,6 +1,7 @@
 const path = require('path');
 const url = require('url');
 const { app, crashReporter, BrowserWindow, Menu } = require('electron');
+const MenuBuilder = require('./MenuBuilder');
 
 
 const IS_DEV = (process.env.NODE_ENV === 'development');
@@ -19,18 +20,15 @@ let mainWindow = null;
 
 async function installExtensions() {
   const installer = require('electron-devtools-installer');
+  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   const extensions = [
     'REACT_DEVELOPER_TOOLS',
     'REDUX_DEVTOOLS'
   ];
-  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-  for (const extension of extensions) {
-    try {
-      await installer.default(installer[extension], forceDownload);
-    } catch(err) {
-      console.log('An error occurred: ', err);
-    }
-  }
+
+  await Promise.all(
+    extensions.map(extension => installer.default(installer[extension], forceDownload))
+  ).catch(console.log);
 }
 
 function createWindow() {
@@ -52,10 +50,13 @@ function createWindow() {
     mainWindow.show();
     mainWindow.focus();
   })
-  // Emitted when the window is closed
+
   mainWindow.on('closed', () => {
     mainWindow = null;
   })
+
+  const menuBuilder = new MenuBuilder(mainWindow);
+  menuBuilder.build();
 
   if (IS_DEV) {
     // Open the DevTools
