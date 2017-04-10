@@ -1,0 +1,87 @@
+const path = require('path');
+const url = require('url');
+const { app, crashReporter, BrowserWindow, Menu } = require('electron');
+
+
+const IS_DEV = (process.env.NODE_ENV === 'development');
+const IS_OSX = (process.platform === 'darwin');
+const IS_WINDOWS = (process.platform === 'win32');
+const IS_LINUX = !(IS_OSX || IS_WINDOWS);
+
+// const UPDATE_URLS = {
+//   darwin: ``,
+//   linux: ``,
+//   win32: ``
+// };
+
+// Keep a global reference of the window object
+let mainWindow = null;
+
+async function installExtensions() {
+  const installer = require('electron-devtools-installer');
+  const extensions = [
+    'REACT_DEVELOPER_TOOLS',
+    'REDUX_DEVTOOLS'
+  ];
+  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+  for (const extension of extensions) {
+    try {
+      await installer.default(installer[extension], forceDownload);
+    } catch(err) {
+      console.log('An error occurred: ', err);
+    }
+  }
+}
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1000,
+    height: 800,
+    minWidth: 640,
+    minHeight: 480,
+    show: false
+  });
+
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, '../index.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.show();
+    mainWindow.focus();
+  })
+  // Emitted when the window is closed
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  })
+
+  if (IS_DEV) {
+    // Open the DevTools
+    mainWindow.openDevTools();
+  }
+}
+
+// When Electron has finished initialization
+app.on('ready', async () => {
+  if (IS_DEV)
+    await installExtensions();
+
+  createWindow();
+});
+
+// Quit when all windows are closed
+app.on('window-all-closed', () => {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (!IS_OSX)
+    app.quit();
+});
+
+app.on('activate', () => {
+  // On OS X it is common to re-create a window in the app when
+  // the dock icon is clicked and there are no other windows open
+  if (mainWindow === null)
+    createWindow();
+});

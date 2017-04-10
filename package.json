@@ -27,23 +27,31 @@
     "oas",
     "api"
   ],
-  "main": "main.js",
+  "main": "main",
   "scripts": {
-    "start": "electron .",
+    "start": "cross-env NODE_ENV=production electron .",
     "dev": "electron . --debug",
-    "lint": "eslint ./"
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "cross-env NODE_ENV=production webpack --config webpack.config.main.js --progress --profile --colors",
+    "build:renderer": "cross-env NODE_ENV=production webpack --config webpack.config.renderer.js --progress --profile --colors",
+    "lint": "eslint ."
   },
   "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "co-mocha": "^1.2.0",
     "coveralls": "^2.12.0",
+    "cross-env": "^4.0.0",
     "devtron": "^1.4.0",
     "electron": "^1.6.2",
+    "electron-devtools-installer": "^2.2.0",
     "eslint": "^3.18.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "spectron": "^3.6.0"
+    "spectron": "^3.6.0",
+    "webpack": "^2.3.3"
   },
   "dependencies": {
     "axios": "^0.16.0",
