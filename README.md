@@ -1,9 +1,7 @@
 <h1 align="center">
   <a href="https://github.com/posquit0/therapi" title="Therapi">
-    <img alt="Therapi" src="https://raw.githubusercontent.com/posquit0/therapi/master/logo.png" width="230px" height="230px" />
+    <img alt="Therapi" src="https://raw.githubusercontent.com/posquit0/therapi/master/logo.png" width="260px" height="260px" />
   </a>
-  <br />
-  Therapi
 </h1>
 
 <p align="center">
