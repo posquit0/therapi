@@ -1,8 +1,8 @@
-<h1 align="center">
+<div align="center">
   <a href="https://github.com/posquit0/therapi" title="Therapi">
-    <img alt="Therapi" src="https://raw.githubusercontent.com/posquit0/therapi/master/logo.png" width="260px" height="260px" />
+    <img alt="Therapi" src="https://raw.githubusercontent.com/posquit0/therapi/master/logo.png" width="280px" height="280px" />
   </a>
-</h1>
+</div>
 
 <p align="center">
   A Documentation and Testing Tool for RESTful API
