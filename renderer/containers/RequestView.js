@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RequestUrlBarComponent from '../components/RequestUrlBar';
+import RequestViewComponent from '../components/RequestView';
 import { sendRequest } from '../actions/request';
 
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    request: state.local.request
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -14,8 +16,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const RequestUrlBar = connect(
+const RequestView = connect(
   mapStateToProps, mapDispatchToProps
-)(RequestUrlBarComponent);
+)(RequestViewComponent);
 
-export default RequestUrlBar;
+export default RequestView;

@@ -2,7 +2,13 @@ import { SEND_REQUEST } from '../actions/request';
 import { SET_RESPONSE } from '../actions/response';
 
 
-function response(state = {}, action) {
+const initialState = {
+  status: null,
+  headers: {},
+  data: null
+};
+
+function response(state = initialState, action = {}) {
   switch (action.type) {
     case SET_RESPONSE:
       const { status, headers, data } = action.payload.response;

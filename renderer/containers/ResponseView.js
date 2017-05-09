@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import ResponseViewComponent from '../components/ResponseView';
 
 
-const mapStateToProps = (state = {}) => {
-  const { response } = state;
-
+const mapStateToProps = (state) => {
   return {
-    response
+    response: state.local.response
   };
 };
 

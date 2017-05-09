@@ -1,15 +1,14 @@
-import { SEND_REQUEST, CANCEL_REQUEST } from '../actions/request';
+import { combineReducers } from 'redux';
+import requestMethod from './requestMethod';
+import requestUrl from './requestUrl';
+import requestHeaders from './requestHeaders';
 
 
-function request(state = {}, action) {
-  switch (action.type) {
-    case SEND_REQUEST:
-      return state;
-    case CANCEL_REQUEST:
-      return state;
-    default:
-      return state;
-  }
-}
+// TODO: data, query
+const requestReducer = combineReducers({
+  method: requestMethod,
+  url: requestUrl,
+  headers: requestHeaders
+});
 
-export default request;
+export default requestReducer;

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import request from './request';
-import response from './response';
+import db from './db';
+import local from './local';
 
 
 // {
@@ -11,14 +11,19 @@ import response from './response';
 //   local: {
 //     project: {},
 //     request: {
-
+//       method: 'get',
+//       query: ,
+//       headers: {},
+//       data: {},
+//       createdAt: 129129192
 //     },
 //     response: {
 //       headers: {
 
 //       },
 //       status: 200,
-//       data: ""
+//       data: "",
+//       createdAt: 1129512
 //     },
 //     ui: {
 //       activeRequests: 0
@@ -28,8 +33,8 @@ import response from './response';
 //   }
 // }
 const rootReducer = combineReducers({
-  request,
-  response
+  db,
+  local
 });
 
 export default rootReducer;

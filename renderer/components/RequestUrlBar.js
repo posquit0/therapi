@@ -26,7 +26,7 @@ class RequestUrlBar extends Component {
         value="get"
         options={ methodOptions }
         onChange={ logChange }
-        clearable="false"
+        clearable={ false }
       />
     );
   }
@@ -58,4 +58,3 @@ RequestUrlBar.propTypes = {
 };
 
 export default RequestUrlBar;
-

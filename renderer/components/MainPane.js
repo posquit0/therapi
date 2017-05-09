@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RequestView from './RequestView';
+import RequestView from '../containers/RequestView';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 
