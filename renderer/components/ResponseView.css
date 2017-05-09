@@ -1,0 +1,5 @@
+.response-view > .response-status-bar {
+  height: 48px;
+  border-bottom: 1px solid #e8e8e8;
+  box-sizing: border-box;
+}

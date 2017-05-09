@@ -1,0 +1,45 @@
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 10pt;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+#app {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  background: white;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.app > .main-pane,
+.app > .aux-pane {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.app > .sidebar {
+  width: 240px;
+  min-width: 240px;
+}
+
+.app > .aux-pane {
+  border-left: 1px solid #e8e8e8;
+}

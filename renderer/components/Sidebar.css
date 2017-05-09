@@ -1,0 +1,9 @@
+.sidebar {
+  background: #222222;
+  color: white;
+}
+
+.sidebar > .sidebar-header {
+  height: 48px;
+  background-color: #0d5c5d;
+}

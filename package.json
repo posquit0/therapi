@@ -29,7 +29,7 @@
   ],
   "main": "main",
   "scripts": {
-    "start": "cross-env NODE_ENV=production electron .",
+    "start": "electron .",
     "dev": "electron . --debug",
     "build": "npm run build:main && npm run build:renderer",
     "build:main": "cross-env NODE_ENV=production webpack --config webpack.config.main.js --progress --profile --colors",
@@ -39,11 +39,14 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "co-mocha": "^1.2.0",
     "coveralls": "^2.12.0",
     "cross-env": "^4.0.0",
+    "css-loader": "^0.28.1",
     "devtron": "^1.4.0",
     "electron": "^1.6.2",
     "electron-devtools-installer": "^2.2.0",
@@ -51,13 +54,17 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "spectron": "^3.6.0",
+    "style-loader": "^0.17.0",
     "webpack": "^2.3.3"
   },
   "dependencies": {
     "axios": "^0.16.0",
+    "prop-types": "^15.5.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
+    "react-select": "^1.0.0-rc.3",
+    "react-tabs": "^0.8.3",
     "redux": "^3.6.0"
   }
 }

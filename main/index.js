@@ -4,7 +4,7 @@ const { app, crashReporter, BrowserWindow, Menu } = require('electron');
 const MenuBuilder = require('./MenuBuilder');
 
 
-const IS_DEV = (process.env.NODE_ENV === 'development');
+const IS_DEV = true || (process.env.NODE_ENV === 'development');
 const IS_OSX = (process.platform === 'darwin');
 const IS_WINDOWS = (process.platform === 'win32');
 const IS_LINUX = !(IS_OSX || IS_WINDOWS);
@@ -26,9 +26,11 @@ async function installExtensions() {
     'REDUX_DEVTOOLS'
   ];
 
-  await Promise.all(
-    extensions.map(extension => installer.default(installer[extension], forceDownload))
-  ).catch(console.log);
+  await Promise
+    .all(extensions.map(
+      extension => installer.default(installer[extension], forceDownload)
+    ))
+    .catch(console.log);
 }
 
 function createWindow() {
@@ -47,6 +49,9 @@ function createWindow() {
   }));
 
   mainWindow.webContents.on('did-finish-load', () => {
+    if (!mainWindow)
+      throw new Error('"mainWindow" is not defined');
+
     mainWindow.show();
     mainWindow.focus();
   })

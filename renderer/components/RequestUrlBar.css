@@ -1,0 +1,42 @@
+.request-url-bar {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+
+.request-url-bar *:focus {
+  outline: none;
+}
+
+.request-method {
+
+}
+
+.request-url {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%;
+  border: none;
+  box-sizing: border-box;
+}
+
+.request-url-bar button {
+  height: 100%;
+  border: none;
+  padding: 0 18px;
+  background: white;
+  font-size: 0.7em;
+  color: black;
+  cursor: pointer;
+}
+
+.request-url-bar button:hover {
+  background: #f8f8f8;
+}

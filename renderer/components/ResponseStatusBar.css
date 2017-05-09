@@ -1,0 +1,51 @@
+.response-status-bar {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  padding: 0px 10px;
+  align-items: center;
+}
+
+.response-status-code {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.response-status-code::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0px 4px;
+}
+
+.response-status-code.error::before {
+  background-color: #c70000;
+}
+
+.response-status-code.failure::before {
+  background-color: #fe8c0f;
+}
+
+.response-status-code.info::before {
+  background-color: #006dd8;
+}
+
+.response-status-code.success::before {
+  background-color: #1fd91f;
+}
+
+.response-time,
+.response-size {
+  width: 48px;
+  text-align: right;
+}
