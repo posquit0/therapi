@@ -4,7 +4,10 @@ export const CHANGE_REQUEST_URL = 'CHANGE_REQUEST_URL';
 
 export function sendRequest() {
   return {
-    type: SEND_REQUEST
+    type: SEND_REQUEST,
+    meta: {
+      throttle: 600
+    }
   };
 }
 
