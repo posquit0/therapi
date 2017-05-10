@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RequestViewComponent from '../components/RequestView';
-import { sendRequest } from '../actions/request';
+import { sendRequest, changeRequestUrl } from '../actions/request';
 
 
 const mapStateToProps = (state) => {
@@ -10,9 +10,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onRequest: () => dispatch(sendRequest())
+    onRequest: () => dispatch(sendRequest()),
+    onUrlChange: (event) => dispatch(changeRequestUrl(event.target.value))
   };
 };
 

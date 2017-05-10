@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from './Icon';
+import { CLOCK, FLOPPY_DISK } from '../constants/icons';
 import './ResponseStatusBar.css';
 
 
@@ -31,10 +34,22 @@ const ResponseStatusBar = ({ status, time, size }) => {
   return (
     <div className="response-status-bar">
       <span className={ `response-status-code ${level}` }>{ translateStatus(status) }</span>
-      <span className="response-time">{ translateTime(time) }</span>
-      <span className="response-size">{ translateSize(size) }</span>
+      <span className="response-time">
+        <Icon icon={ CLOCK } />
+        <span>{ translateTime(time) }</span>
+      </span>
+      <span className="response-size">
+        <Icon icon={ FLOPPY_DISK } />
+        <span>{ translateSize(size) }</span>
+      </span>
     </div>
   );
+};
+
+ResponseStatusBar.propTypes = {
+  status: PropTypes.number,
+  time: PropTypes.number,
+  size: PropTypes.number
 };
 
 export default ResponseStatusBar;

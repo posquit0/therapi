@@ -15,16 +15,13 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
     if (requestId && canceled.get(requestId))
       return;
   };
-  const config = {
-    method: 'get',
-    url: 'https://api.carplat.co.kr'
-  };
 
   switch (action.type) {
-  case SEND_REQUEST:
-    axios(config)
-      .then(handleResponse)
-      .catch(handleError);
+    case SEND_REQUEST:
+      const { request } = getState().local;
+      axios(request)
+        .then(handleResponse)
+        .catch(handleError);
     return;
   case CANCEL_REQUEST:
       canceled.set(requestId, true);

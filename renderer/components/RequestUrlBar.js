@@ -34,18 +34,20 @@ class RequestUrlBar extends Component {
   renderButton() {
     // TODO: Send / Cancel
     return (
-      <button onClick={ this.props.onRequest }>Send</button>
+      <button onClick={ this.props.onRequest }>
+        <span>Send</span>
+      </button>
     );
   }
 
   render() {
     // TODO: handleAutocompleteUrls
-    const { url, method, onRequest, onCancel } = this.props;
+    const { url, method, onRequest, onUrlChange } = this.props;
 
     return (
       <div className="request-url-bar">
         { this.renderMethodSelect() }
-        <input type="text" className="request-url" onChange={ this.props.onUrlChange } />
+        <input type="text" className="request-url" onChange={ onUrlChange } />
         { this.renderButton() }
       </div>
     );

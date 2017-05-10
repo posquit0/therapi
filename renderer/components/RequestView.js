@@ -9,12 +9,16 @@ import RequestAuthView from './RequestAuthView';
 import './RequestView.css';
 
 
-const RequestView = ({ request, onRequest }) => {
+const RequestView = ({ request, onRequest, onUrlChange }) => {
   const { method, url, query, data, headers } = request || {};
 
   return (
     <div className="request-view">
-      <RequestUrlBar method={ method } url={ url } onRequest={ onRequest } />
+      <RequestUrlBar
+        method={ method }
+        url={ url }
+        onRequest={ onRequest }
+        onUrlChange={ onUrlChange } />
       <Tabs className="request-tabs">
         <TabList>
           <Tab>Body</Tab>

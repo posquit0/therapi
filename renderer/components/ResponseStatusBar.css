@@ -47,5 +47,17 @@
 .response-time,
 .response-size {
   width: 48px;
+  margin-left: 8px;
+  font-size: 0.7em;
   text-align: right;
+}
+
+.response-time > span,
+.response-size > span {
+  vertical-align: middle;
+}
+
+.response-time > svg,
+.response-size > svg {
+  margin-right: 0.2em;
 }

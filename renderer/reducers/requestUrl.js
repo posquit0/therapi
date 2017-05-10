@@ -1,8 +1,13 @@
-function requestUrl(state = '', action = {}) {
+import { CHANGE_REQUEST_URL } from '../actions/request';
+
+
+const requestUrlReducer = (state = '', action) => {
   switch (action.type) {
-    default:
-      return state;
+  case CHANGE_REQUEST_URL:
+    return action.payload.url;
+  default:
+    return state;
   }
 }
 
-export default requestUrl;
+export default requestUrlReducer;
