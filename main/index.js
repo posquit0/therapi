@@ -35,11 +35,14 @@ async function installExtensions() {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    // titleBarStyle: 'hidden',
     width: 1000,
     height: 800,
     minWidth: 640,
     minHeight: 480,
+    center: true,
     show: false
+    // icon: path.join(__dirname, '../assets/icons/icon.icns')
   });
 
   mainWindow.loadURL(url.format({

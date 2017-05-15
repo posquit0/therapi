@@ -7,8 +7,8 @@ class MenuBuilder {
     this.mainWindow = mainWindow;
   }
 
-  buildDefaultTemplate() {
-    const subMenuFile = {
+  buildTemplate() {
+    const menuFile = {
       label: '&File',
       submenu: [{
         label: '&Close',
@@ -17,7 +17,66 @@ class MenuBuilder {
       }]
     };
 
-    const subMenuHelp = {
+    const menuEdit = {
+      label: 'Edit',
+      submenu: [{
+        role: 'undo'
+      }, {
+        role: 'redo'
+      }, {
+        type: 'separator'
+      }, {
+        role: 'cut'
+      }, {
+        role: 'copy'
+      }, {
+        role: 'paste'
+      }, {
+        role: 'pasteandmatchstyle'
+      }, {
+        role: 'delete'
+      }, {
+        role: 'selectall'
+      }]
+    };
+
+    const menuView = {
+      label: 'View',
+      submenu: [{
+        label: 'Reload',
+        accelerator: 'CmdOrCtrl+R',
+        click: (item, focusedWindow) => {
+          if (focusedWindow) focusedWindow.reload();
+        }
+      }, {
+        type: 'separator'
+      }, {
+        role: 'resetzoom'
+      }, {
+        role: 'zoomin'
+      }, {
+        role: 'zoomout'
+      }, {
+        type: 'separator'
+      }, {
+        role: 'togglefullscreen'
+      }]
+    };
+
+    const menuWindow = {
+      label: 'Window',
+      submenu: [{
+        role: 'minimize'
+      }, {
+        role: 'zoom'
+      }, {
+        type: 'separator'
+      }, {
+        role: 'front'
+      }]
+    };
+
+    const menuHelp = {
       label: 'Help',
       submenu: [{
         label: 'Learn More',
@@ -32,46 +91,47 @@ class MenuBuilder {
       }]
     };
 
-    return [
-      subMenuFile,
-      subMenuHelp
+    const template = [
+      menuFile,
+      menuEdit,
+      menuView,
+      menuWindow,
+      menuHelp
     ];
-  }
 
-  buildDarwinTemplate() {
-    const subMenuApp = {
-      label: 'Therapy',
-      submenu: [
-        { label: 'About Therapy', selector: 'orderFrontStandardAboutPanel:' },
-        { type: 'separator' },
-        { label: 'Services', submenu: [] },
-        { type: 'separator' },
-        { label: 'Hide Therapy', accelerator: 'Command+H', selector: 'hide:' },
-        { label: 'Hide Others', accelerator: 'Command+Shift+H', selector: 'hideOtherApplications:' },
-        { label: 'Show All', selector: 'unhideAllApplications:' },
-        { type: 'separator' },
-        { label: 'Quit', accelerator: 'Command+Q', click: () => app.quit() },
-      ]
-    };
-    const subMenuHelp = {
-      label: 'Help',
-      submenu: [{
-        label: 'Learn More',
-        click() {
-          shell.openExternal('https://github.com/posquit0/therapi');
-        }
+    if (process.platform === 'darwin') {
+      const appName = app.getName();
+      const menuApp = {
+        label: appName,
+        submenu: [
+          { label: 'About Therapy', selector: 'orderFrontStandardAboutPanel:' },
+          { type: 'separator' },
+          { label: 'Services', submenu: [] },
+          { type: 'separator' },
+          { label: 'Hide Therapy', accelerator: 'Command+H', selector: 'hide:' },
+          { label: 'Hide Others', accelerator: 'Command+Shift+H', selector: 'hideOtherApplications:' },
+          { label: 'Show All', selector: 'unhideAllApplications:' },
+          { type: 'separator' },
+          { label: 'Quit', accelerator: 'Command+Q', click: () => app.quit() },
+        ]
+      };
+
+      template.unshift(menuApp);
+
+      menuEdit.submenu.push({
+        type: 'separator'
       }, {
-        label: 'Search Issues',
-        click() {
-          shell.openExternal('https://github.com/posquit0/therapi/issues');
-        }
-      }]
-    };
+        // TODO: test the functions
+        label: 'Speech',
+        submenu: [{
+          role: 'startspeaking'
+        }, {
+          role: 'stopspeaking'
+        }]
+      });
+    }
 
-    return [
-      subMenuApp,
-      subMenuHelp
-    ];
+    return template;
   }
 
   buildForDevelopment() {
@@ -80,23 +140,18 @@ class MenuBuilder {
       const menu = Menu.buildFromTemplate([{
         label: 'Inspect Element',
         click: () => this.mainWindow.inspectElement(x, y)
-      }])
+      }]);
       menu.popup(this.mainWindow);
-    })
+    });
   }
 
   build() {
     if (process.env.NODE_ENV === 'development')
       this.buildForDevelopment();
 
-    let template;
-
-    if (process.platform === 'darwin')
-      template = this.buildDarwinTemplate();
-    else
-      template = this.buildDefaultTemplate();
-
+    const template = this.buildTemplate();
     const menu = Menu.buildFromTemplate(template);
+
     Menu.setApplicationMenu(menu);
 
     return menu;
