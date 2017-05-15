@@ -59,7 +59,13 @@ class MenuBuilder {
       }, {
         type: 'separator'
       }, {
-        role: 'togglefullscreen'
+        label: 'Toggle Full Screen',
+        accelerator: process.platform === 'darwin'
+          ? 'Ctrl+Command+F' : 'F11',
+        click: (item, focusedWindow) => {
+          if (focusedWindow)
+            focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+        }
       }]
     };
 
@@ -67,12 +73,6 @@ class MenuBuilder {
       label: 'Window',
       submenu: [{
         role: 'minimize'
-      }, {
-        role: 'zoom'
-      }, {
-        type: 'separator'
-      }, {
-        role: 'front'
       }]
     };
 
@@ -103,17 +103,26 @@ class MenuBuilder {
       const appName = app.getName();
       const menuApp = {
         label: appName,
-        submenu: [
-          { label: 'About Therapy', selector: 'orderFrontStandardAboutPanel:' },
-          { type: 'separator' },
-          { label: 'Services', submenu: [] },
-          { type: 'separator' },
-          { label: 'Hide Therapy', accelerator: 'Command+H', selector: 'hide:' },
-          { label: 'Hide Others', accelerator: 'Command+Shift+H', selector: 'hideOtherApplications:' },
-          { label: 'Show All', selector: 'unhideAllApplications:' },
-          { type: 'separator' },
-          { label: 'Quit', accelerator: 'Command+Q', click: () => app.quit() },
-        ]
+        submenu: [{
+          role: 'about'
+        }, {
+          type: 'separator'
+        }, {
+          role: 'services',
+          submenu: []
+        }, {
+          type: 'separator'
+        }, {
+          role: 'hide'
+        }, {
+          role: 'hideothers'
+        }, {
+          role: 'unhide'
+        }, {
+          type: 'separator'
+        }, {
+          role: 'quit'
+        }]
       };
 
       template.unshift(menuApp);
@@ -128,6 +137,27 @@ class MenuBuilder {
         }, {
           role: 'stopspeaking'
         }]
+      });
+
+      menuWindow.submenu.push({
+        role: 'zoom'
+      }, {
+        type: 'separator'
+      }, {
+        role: 'front'
+      });
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+      menuView.submenu.push({
+        type: 'separator'
+      }, {
+        label: 'Toggle Developer Tools',
+        accelerator: process.platform === 'darwin'
+          ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+        click: (item, focusedWindow) => {
+          if (focusedWindow) focusedWindow.webContents.toggleDevTools();
+        }
       });
     }
 
