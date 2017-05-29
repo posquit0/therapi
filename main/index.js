@@ -41,7 +41,10 @@ function createWindow() {
     minWidth: 640,
     minHeight: 480,
     center: true,
-    show: false
+    show: false,
+    'web-preferences': {
+      'web-security': false
+    }
     // icon: path.join(__dirname, '../assets/icons/icon.icns')
   });
 

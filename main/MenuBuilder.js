@@ -59,13 +59,7 @@ class MenuBuilder {
       }, {
         type: 'separator'
       }, {
-        label: 'Toggle Full Screen',
-        accelerator: process.platform === 'darwin'
-          ? 'Ctrl+Command+F' : 'F11',
-        click: (item, focusedWindow) => {
-          if (focusedWindow)
-            focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
-        }
+        role: 'togglefullscreen'
       }]
     };
 
