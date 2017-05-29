@@ -47,7 +47,11 @@ class RequestUrlBar extends Component {
     return (
       <div className="request-url-bar">
         { this.renderMethodSelect() }
-        <input type="text" className="request-url" onChange={ onUrlChange } />
+        <input
+          type="text"
+          className="request-url"
+          placeholder="https://api.myproduct.com/v1/users"
+          onChange={ onUrlChange } />
         { this.renderButton() }
       </div>
     );

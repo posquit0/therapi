@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Filter from './Filter';
 import WorkspaceView from './WorkspaceView';
-import HistoryView from './HistoryView';
+import HistoryView from '../containers/HistoryView';
 import './Sidebar.css';
 
 

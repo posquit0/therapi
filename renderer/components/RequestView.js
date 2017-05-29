@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Divider from './Divider';
 import RequestUrlBar from './RequestUrlBar';
 import RequestBodyView from './RequestBodyView';
 import RequestQueryView from './RequestQueryView';
@@ -19,23 +20,24 @@ const RequestView = ({ request, onRequest, onUrlChange }) => {
         url={ url }
         onRequest={ onRequest }
         onUrlChange={ onUrlChange } />
-      <Tabs className="request-tabs">
+      <Divider />
+      <Tabs className={ ['request-tabs', 'react-tabs'] }>
         <TabList>
           <Tab>Body</Tab>
           <Tab>Query</Tab>
           <Tab>Header</Tab>
           <Tab>Auth</Tab>
         </TabList>
-        <TabPanel className="request-tab">
+        <TabPanel className={ ['request-tab', 'react-tabs__tab-panel'] }>
           <RequestBodyView data={ data } />
         </TabPanel>
-        <TabPanel className="request-tab">
+        <TabPanel className={ ['request-tab', 'react-tabs__tab-panel'] }>
           <RequestQueryView query={ query } />
         </TabPanel>
-        <TabPanel className="request-tab">
+        <TabPanel className={ ['request-tab', 'react-tabs__tab-panel'] }>
           <RequestHeaderView headers={ headers } />
         </TabPanel>
-        <TabPanel className="request-tab">
+        <TabPanel className={ ['request-tab', 'react-tabs__tab-panel'] }>
           <RequestAuthView />
         </TabPanel>
       </Tabs>
