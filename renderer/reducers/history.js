@@ -1,10 +1,14 @@
-const initialState = {
-};
+import { ADD_HISTORY } from '../actions/history';
+
+
+const initialState = [];
 
 function history(state = initialState, action = {}) {
   switch (action.type) {
-    default:
-      return state;
+  case ADD_HISTORY:
+    return [action.payload, ...state];
+  default:
+    return state;
   }
 }
 

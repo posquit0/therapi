@@ -4,15 +4,19 @@ import { SET_RESPONSE } from '../actions/response';
 
 const initialState = {
   status: null,
+  statusText: null,
   headers: {},
-  data: null
+  data: null,
+  latency: null
 };
 
 function response(state = initialState, action = {}) {
   switch (action.type) {
     case SET_RESPONSE:
-      const { status, headers, data } = action.payload.response;
-      return { status, headers, data };
+      const {
+        status, statusText, headers, data, latency
+      } = action.payload.response;
+      return { status, statusText, headers, data, latency };
     default:
       return state;
   }
