@@ -1,4 +1,5 @@
 .react-tabs [role=tablist] {
+  margin: 0;
   background: #f8f8f8;
   border-bottom: 1px solid #e8e8e8;
 }

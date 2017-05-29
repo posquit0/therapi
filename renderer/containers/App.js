@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar';
 import MainPane from '../components/MainPane';
 import AuxPane from '../components/AuxPane';
 import './App.css';
+import 'react-tabs/style/react-tabs.css';
 import './Tabs.css';
 
 
