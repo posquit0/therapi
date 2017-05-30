@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Sidebar from '../components/Sidebar';
 import MainPane from '../components/MainPane';
 import AuxPane from '../components/AuxPane';

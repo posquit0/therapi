@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 
 const Divider = (props) => {
-  const { style } = props;
+  const { style, color } = props;
 
   const dividerStyle = Object.assign({
     margin: 0,
     height: 1,
     border: 'none',
-    backgroundColor: '#e8e8e8'
+    backgroundColor: color || '#e8e8e8'
   }, style);
 
   return (
@@ -18,7 +18,8 @@ const Divider = (props) => {
 };
 
 Divider.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
+  color: PropTypes.string
 };
 
 Divider.defaultProps = {};

@@ -14,6 +14,9 @@ const Wrapper = styled.div`
   .panel-heading * {
     vertical-align: middle;
   }
+  .panel-heading svg {
+    margin: 0 0.4em;
+  }
   .panel-heading input[type=checkbox] {
     display: none;
     visibility: hidden;
